@@ -20,7 +20,10 @@ public class MessageBase{
     public static final String MESSAGE_TOPIC_SIMULATION_ZUSI_FAHRPULT = "zusi_fahrpult";
     public static final String MESSAGE_TOPIC_SIMULATION_ZUSI_AUSBILDUNG = "zusi_ausbildung";
     public static final String MESSAGE_TOPIC_ETCS_TIU = "etcstiu";
-	
+    public static final String MESSAGE_TOPIC_ERSA_ETCS_TIU = "ersaetcstiu";
+    public static final String MESSAGE_TOPIC_ERSA_ETCS_ODO = "ersaetcsodo";
+    public static final String MESSAGE_TOPIC_ERSA_ETCS_SCE = "ersaetcssce";
+
 	private String topic;
     private String messageId;
 	private String payload;
