@@ -69,8 +69,8 @@ public abstract class EndpointTcpClient extends EndpointCommon {
         synchronized(receiveEventLock){
 
             //TODO implement
-            LOGGER.log(Level.INFO, "Thread active: " + Arrays.toString(message));
-            onIncomingEndpointMessage("");
+            //LOGGER.log(Level.INFO, "Thread active: " + Arrays.toString(message));
+            onIncomingEndpointMessage(new String(message));
         }
     }
 
