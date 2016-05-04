@@ -2,6 +2,7 @@ package ch.desm.middleware.app;
 
 
 import ch.desm.middleware.app.core.communication.broker.Broker;
+import ch.desm.middleware.app.module.ersa.ErsaService;
 import ch.desm.middleware.app.module.re420.Re420Service;
 import ch.desm.middleware.app.module.obermatt.OmService;
 import ch.desm.middleware.app.module.gui.ManagementService;
@@ -19,6 +20,8 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+
+import static ch.desm.middleware.app.core.communication.message.MessageBase.MESSAGE_TOPIC_MANAGEMENT;
 
 public class RunAppSingleton extends ThreadBase {
 
@@ -71,8 +74,16 @@ public class RunAppSingleton extends ThreadBase {
         /***************************************************************************/
 
         //startOm();
-        startZusi();
+        //startZusi();
         //startCabine();
+        startErsa();
+    }
+
+    private void startErsa() {
+        final Broker broker = Broker.getInstance();
+        final ErsaService ersaService = new ErsaService(broker, "192.168.56.101", 8080);
+        broker.publish("mgmt.ersa.tiu;os;0;management;;;init;management;#", MESSAGE_TOPIC_MANAGEMENT);
+        broker.publish("mgmt.ersa.tiu;os;0;management;;;start;management;#", MESSAGE_TOPIC_MANAGEMENT);
     }
 
     private void startOm(){

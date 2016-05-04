@@ -27,7 +27,7 @@ public class Broker {
      *
      * @param message
      */
-    protected void publish(String message, String topic) {
+    public void publish(String message, String topic) {
         synchronized (lockClients){
             for(BrokerClient client : clients) {
 
