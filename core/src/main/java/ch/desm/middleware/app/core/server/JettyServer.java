@@ -23,8 +23,8 @@ public class JettyServer extends ThreadBase {
 
     public JettyServer(String projectDir){
         this.inetSocketAddress = new InetSocketAddress("0.0.0.0", 8071);
-        targetDir = File.separator+"target"+File.separator+"artifacts"+File.separator+"core_war_exploded";
-        tempDir = targetDir+ File.separator+"tmp";
+        targetDir = File.separator+"target"+File.separator+"core-0.1";
+        tempDir = projectDir + targetDir+ File.separator+"tmp";
         warDir = projectDir + targetDir;
         descriptorDir = projectDir + targetDir+File.separator+"WEB-INF"+File.separator+"web.xml";
         contextPath = File.separator;

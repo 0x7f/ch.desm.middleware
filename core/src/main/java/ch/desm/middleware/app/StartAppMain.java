@@ -14,8 +14,9 @@ public class StartAppMain {
     private static Logger LOGGER = Logger.getLogger(StartAppMain.class);
 
     public static void main(String[] args){
+        final String userDir = System.getProperty("user.dir");
         LOGGER.log(Level.INFO, "initialise middleware...");
-        LOGGER.log(Level.INFO, "starting directory: "+ System.getProperty("user.dir"));
+        LOGGER.log(Level.INFO, "starting directory: "+ userDir);
 
         RunAppSingleton main = RunAppSingleton.getSingleton();
 
@@ -23,14 +24,7 @@ public class StartAppMain {
         if(args.length >0 && args.length <= 4){
             main.setConfiguration(args[0], args[1], args[2], args[3], args[4]);
         } else {
-            if(SystemUtils.IS_OS_UNIX){
-                main.setConfiguration("192.168.1.32", "8070", "/websocket", "/gui", System.getProperty("user.dir"));//"/opt/desm/middleware/core");
-            }
-            else if(SystemUtils.IS_OS_WINDOWS){
-                main.setConfiguration("192.168.1.32", "8070", "/websocket", "/gui", System.getProperty("user.dir"));//"C:/Users/Sebastian/Dropbox/DESM-Verein/Projekte/DESM-Middleware/code/ch.desm.middleware.app/core");
-            } else{
-                LOGGER.log(Level.ERROR, "unsupported OS");
-            }
+            main.setConfiguration("192.168.178.20", "8070", "/websocket", "/gui", userDir);
         }
 
         if(main.isConfigured()){
